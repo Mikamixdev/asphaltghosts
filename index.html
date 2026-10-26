@@ -1,36 +1,32 @@
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101010">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-
-  <title>عفاريت الأسفلت | MikaMix</title>
-  <meta name="description" content="جرّب لعبة عفاريت الأسفلت من MikaMix على Google Play وشاركنا تجربتك.">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>Asphalt Ghosts | MikaMix</title>
 
   <style>
     :root {
-      --bg: #101010;
-      --gold: #f5c542;
-      --yellow: #ffe36e;
-      --text: #f7f7f7;
+      --bg: #0b0b0b;
+      --panel: #171717;
+      --gold: #f4c542;
+      --gold-light: #ffe58a;
+      --text: #f5f5f5;
       --muted: #bdbdbd;
-      --border: rgba(245, 197, 66, 0.25);
+      --border: #393126;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      background: radial-gradient(ellipse at top, #29220e 0%, var(--bg) 48%);
+      background:
+        radial-gradient(ellipse at top, #29200c 0%, var(--bg) 48%);
       color: var(--text);
       font-family: Arial, Tahoma, sans-serif;
       line-height: 1.7;
@@ -41,66 +37,106 @@
     }
 
     .container {
-      width: min(100% - 32px, 1000px);
-      margin-inline: auto;
+      width: min(920px, 92%);
+      margin: 0 auto;
     }
 
     header {
-      padding: 22px 0;
+      padding: 18px 0;
       border-bottom: 1px solid var(--border);
-      background: rgba(16, 16, 16, 0.8);
+      background: rgba(0, 0, 0, 0.55);
     }
 
     .header-content {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      font-size: 1.15rem;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    .logo {
-      width: 58px;
-      height: 58px;
+    .brand img {
+      width: 48px;
+      height: 48px;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 10px;
     }
 
     .brand-name {
       color: var(--gold);
-      letter-spacing: 1px;
+      font-size: 20px;
     }
 
-    button,
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border: 1px solid var(--gold);
-      border-radius: 10px;
-      background: var(--gold);
-      color: #151515;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 800;
+    button {
+      font: inherit;
       cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
     }
 
-    button:hover,
+    .language-button {
+      border: 1px solid var(--gold);
+      border-radius: 9px;
+      background: transparent;
+      color: var(--gold-light);
+      padding: 7px 14px;
+      font-weight: bold;
+    }
+
+    .language-button:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 48px 0 34px;
+    }
+
+    .hero-logo {
+      width: min(180px, 45%);
+      aspect-ratio: 1;
+      object-fit: contain;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 22px rgba(244, 197, 66, 0.15));
+    }
+
+    h1 {
+      color: var(--gold);
+      font-size: clamp(30px, 6vw, 48px);
+      line-height: 1.25;
+      margin: 8px 0 14px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--gold);
+      color: #111;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      padding: 11px 19px;
+      margin: 5px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
     .button:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
       transform: translateY(-2px);
-      background: var(--yellow);
     }
 
     .button.secondary {
@@ -108,158 +144,158 @@
       color: var(--gold);
     }
 
-    .hero {
-      text-align: center;
-      padding: 64px 0 42px;
-    }
-
-    .hero h1 {
-      margin: 0 0 12px;
-      color: var(--gold);
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      line-height: 1.25;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: 0 auto 24px;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
     .section-title {
-      margin: 0 0 22px;
       color: var(--gold);
       text-align: center;
-      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-size: 27px;
+      margin: 20px 0;
     }
 
-    /* الخطوات فوق بعضها على جميع الشاشات */
     .steps {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
-      gap: 20px;
-      margin: 20px 0 26px;
+      gap: 18px;
+      margin: 26px 0 34px;
     }
 
-    .card {
-      padding: 26px;
+    .step {
+      background: linear-gradient(145deg, #1b1b1b, #111);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      background: linear-gradient(145deg, #202020, #171717);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      border-radius: 16px;
+      padding: 23px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
     }
 
     .step-number {
       display: inline-flex;
+      width: 38px;
+      height: 38px;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
-      margin-bottom: 10px;
       border-radius: 50%;
       background: var(--gold);
       color: #111;
-      font-size: 1.2rem;
-      font-weight: 900;
+      font-weight: bold;
+      font-size: 19px;
+      margin-bottom: 8px;
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.3rem;
+    .step h3 {
+      color: var(--gold-light);
+      margin: 3px 0 10px;
+      font-size: 22px;
     }
 
-    .card p {
+    .step p {
       color: var(--muted);
-      margin: 0 0 18px;
+      margin: 8px 0 14px;
     }
 
     .notice {
-      margin: 0 auto 60px;
-      padding: 18px 22px;
-      border: 1px solid var(--border);
-      border-right: 4px solid var(--gold);
-      border-radius: 12px;
-      background: rgba(245, 197, 66, 0.07);
-      color: #f0e7c9;
+      border-inline-start: 4px solid var(--gold);
+      background: rgba(244, 197, 66, 0.08);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 16px;
+      color: #f4e8c4;
     }
 
     .notice strong {
-      color: var(--gold);
+      color: var(--gold-light);
     }
 
-    .videos {
-      padding: 12px 0 64px;
+    .video-section {
+      margin: 35px 0;
     }
 
-    .videos-description {
-      margin: -10px auto 24px;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .youtube-container {
+    .video-wrapper {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       overflow: hidden;
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 15px;
       background: #000;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
     }
 
-    .youtube-container iframe {
-      display: block;
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       border: 0;
     }
 
-    .video-link {
-      display: flex;
-      justify-content: center;
-      margin-top: 18px;
+    .video-fallback {
+      text-align: center;
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .contact {
+      text-align: center;
+      padding: 25px 22px;
+      margin: 32px 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--panel);
+    }
+
+    .contact h2 {
+      color: var(--gold);
+      margin-top: 0;
+    }
+
+    .contact p {
+      color: var(--muted);
+    }
+
+    .contact a:not(.button) {
+      color: var(--gold-light);
+      overflow-wrap: anywhere;
     }
 
     footer {
-      padding: 24px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
       text-align: center;
+      padding: 22px 10px;
+      border-top: 1px solid var(--border);
+      color: #888;
+      font-size: 14px;
     }
 
     footer strong {
       color: var(--gold);
     }
 
-    @media (max-width: 680px) {
-      .hero {
-        padding-top: 42px;
-      }
+    [hidden] {
+      display: none !important;
+    }
 
-      .card {
-        padding: 22px;
-      }
-
+    @media (max-width: 520px) {
       .header-content {
-        justify-content: center;
+        gap: 8px;
       }
 
-      .brand {
-        flex: 1;
+      .brand img {
+        width: 40px;
+        height: 40px;
       }
 
-      button,
+      .brand-name {
+        font-size: 17px;
+      }
+
+      .hero {
+        padding-top: 32px;
+      }
+
+      .step {
+        padding: 19px;
+      }
+
       .button {
-        padding: 11px 16px;
+        width: 100%;
+        margin: 5px 0;
       }
     }
   </style>
@@ -269,78 +305,72 @@
   <header>
     <div class="container header-content">
       <div class="brand">
-        <img class="logo" src="Logo_Icon.png" alt="Asphalt Ghosts Logo">
-        <div>
-          <div class="brand-name">MikaMix</div>
-          <div data-ar="عفاريت الأسفلت" data-en="Asphalt Ghosts">
-            عفاريت الأسفلت
-          </div>
-        </div>
+        <img src="Logo_Icon.png" alt="MikaMix Logo">
+        <span class="brand-name">MikaMix</span>
       </div>
 
-      <button type="button" id="languageToggle" aria-label="Change language">
-        English
+      <button class="language-button" id="languageToggle" type="button">
+        العربية
       </button>
     </div>
   </header>
 
-  <main>
+  <main class="container">
     <section class="hero">
-      <div class="container">
-        <h1 data-ar="عفاريت الأسفلت" data-en="Asphalt Ghosts">
-          عفاريت الأسفلت
-        </h1>
+      <img class="hero-logo" src="Logo_Icon.png" alt="Asphalt Ghosts">
 
-        <p
-          data-ar="تسلا الغلابة وصلت! جرّب لعبة العربيات المصرية من MikaMix وساعدنا نختبرها قبل الإصدار الرسمي."
-          data-en="The people's Tesla is here! Try MikaMix's Egyptian driving game and help us test it before the official release.">
-          تسلا الغلابة وصلت! جرّب لعبة العربيات المصرية من MikaMix وساعدنا نختبرها قبل الإصدار الرسمي.
-        </p>
+      <h1 data-ar="عفاريت الأسفلت" data-en="Asphalt Ghosts">
+        Asphalt Ghosts
+      </h1>
 
-        <div class="hero-actions">
-          <a
-            class="button"
-            href="https://groups.google.com/g/mikamix"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-ar="الخطوة الأولى: انضم لجروب الاختبار"
-            data-en="Step 1: Join the testing group">
-            الخطوة الأولى: انضم لجروب الاختبار
-          </a>
+      <p
+        data-ar="مستعد للتحدي؟ ساعدنا نجرب اللعبة قبل الإصدار الرسمي! اتبع الخطوتين دول عشان تنضم للاختبار وتبدأ اللعب."
+        data-en="Ready for the challenge? Help us test the game before its official release! Follow these two steps to join the test and start playing.">
+        Ready for the challenge? Help us test the game before its official release!
+        Follow these two steps to join the test and start playing.
+      </p>
 
-          <a
-            class="button secondary"
-            href="https://play.google.com/store/apps/details?id=com.mikamix.asphaltghosts"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-ar="صفحة اللعبة على Google Play"
-            data-en="Game page on Google Play">
-            صفحة اللعبة على Google Play
-          </a>
-        </div>
-      </div>
+      <a
+        class="button"
+        href="https://groups.google.com/g/mikamix"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ar="الخطوة الأولى: انضم للجروب"
+        data-en="Step 1: Join the Group">
+        Step 1: Join the Group
+      </a>
+
+      <a
+        class="button secondary"
+        href="https://play.google.com/store/apps/details?id=com.mikamix.asphaltghosts"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ar="الخطوة الثانية: صفحة اللعبة"
+        data-en="Step 2: Game Page">
+        Step 2: Game Page
+      </a>
     </section>
 
-    <section class="container" id="testing">
+    <section>
       <h2
         class="section-title"
-        data-ar="ابدأ تجربة اللعبة في خطوتين"
-        data-en="Start testing in two steps">
-        ابدأ تجربة اللعبة في خطوتين
+        data-ar="إزاي تبدأ الاختبار؟"
+        data-en="How to Start Testing">
+        How to Start Testing
       </h2>
 
       <div class="steps">
-        <article class="card">
+        <article class="step">
           <div class="step-number">1</div>
 
-          <h3 data-ar="انضم لجروب الاختبار" data-en="Join the testing group">
-            انضم لجروب الاختبار
+          <h3 data-ar="انضم لجروب الاختبار" data-en="Join the Testing Group">
+            Join the Testing Group
           </h3>
 
           <p
-            data-ar="افتح جروب MikaMix وسجّل الدخول بحساب Google اللي هتستخدمه على متجر Play، وبعدها انضم للجروب."
-            data-en="Open the MikaMix Google Group and sign in with the same Google account you'll use on Google Play, then join the group.">
-            افتح جروب MikaMix وسجّل الدخول بحساب Google اللي هتستخدمه على متجر Play، وبعدها انضم للجروب.
+            data-ar="افتح جروب MikaMix على Google Groups وانضم باستخدام حساب Google اللي هتستخدمه لتحميل اللعبة."
+            data-en="Open the MikaMix Google Group and join using the Google account you will use to download the game.">
+            Open the MikaMix Google Group and join using the Google account you will use to download the game.
           </p>
 
           <a
@@ -348,23 +378,47 @@
             href="https://groups.google.com/g/mikamix"
             target="_blank"
             rel="noopener noreferrer"
-            data-ar="انضم للجروب"
-            data-en="Join the group">
-            انضم للجروب
+            data-ar="افتح جوجل جروب"
+            data-en="Open Google Group">
+            Open Google Group
           </a>
+
+          <div class="notice">
+            <strong
+              data-ar="مهم:"
+              data-en="Important:">Important:</strong>
+
+            <span
+              data-ar="بعد الانضمام للجروب، لو ظهر لك اختيار Become a tester اضغط عليه لإكمال الاشتراك في الاختبار. بعد كده انتقل للخطوة الثانية."
+              data-en="After joining the group, if you see the Become a tester option, click it to complete your test enrollment. Then continue to Step 2.">
+              After joining the group, if you see the Become a tester option, click it to complete your test enrollment. Then continue to Step 2.
+            </span>
+          </div>
+
+          <div class="notice">
+            <strong
+              data-ar="خلي بالك:"
+              data-en="Please note:">Please note:</strong>
+
+            <span
+              data-ar="استخدم نفس حساب Google في جروب الاختبار وGoogle Play."
+              data-en="Use the same Google account for the testing group and Google Play.">
+              Use the same Google account for the testing group and Google Play.
+            </span>
+          </div>
         </article>
 
-        <article class="card">
+        <article class="step">
           <div class="step-number">2</div>
 
-          <h3 data-ar="افتح صفحة اللعبة" data-en="Open the game page">
-            افتح صفحة اللعبة
+          <h3 data-ar="افتح صفحة اللعبة على Google Play" data-en="Open the Game on Google Play">
+            Open the Game on Google Play
           </h3>
 
           <p
-            data-ar="بعد الانضمام للجروب، افتح صفحة عفاريت الأسفلت على Google Play بنفس حساب Google، واتبع التعليمات المتاحة لك."
-            data-en="After joining the group, open Asphalt Ghosts on Google Play using the same Google account and follow the available instructions.">
-            بعد الانضمام للجروب، افتح صفحة عفاريت الأسفلت على Google Play بنفس حساب Google، واتبع التعليمات المتاحة لك.
+            data-ar="بعد إكمال الانضمام للاختبار، افتح صفحة عفاريت الأسفلت على Google Play بنفس حساب Google، واتبع التعليمات الظاهرة لك للمشاركة في الاختبار وتثبيت اللعبة."
+            data-en="After completing test enrollment, open Asphalt Ghosts on Google Play using the same Google account, then follow the instructions shown to join the test and install the game.">
+            After completing test enrollment, open Asphalt Ghosts on Google Play using the same Google account, then follow the instructions shown to join the test and install the game.
           </p>
 
           <a
@@ -372,107 +426,133 @@
             href="https://play.google.com/store/apps/details?id=com.mikamix.asphaltghosts"
             target="_blank"
             rel="noopener noreferrer"
-            data-ar="افتح Google Play"
-            data-en="Open Google Play">
-            افتح Google Play
+            data-ar="افتح صفحة اللعبة"
+            data-en="Open Game Page">
+            Open Game Page
           </a>
-        </article>
-      </div>
 
-      <div class="notice">
-        <strong data-ar="مهم:" data-en="Important:">مهم:</strong>
-        <span
-          data-ar=" لازم تستخدم نفس حساب Google في جروب الاختبار ومتجر Google Play. لو رابط الاختبار مش ظاهر، تأكد إنك انضممت للجروب بالحساب الصحيح ثم افتح صفحة اللعبة مرة تانية."
-          data-en=" Use the same Google account for the testing group and Google Play. If the testing option doesn't appear, make sure you've joined the group with the correct account, then reopen the game page.">
-          لازم تستخدم نفس حساب Google في جروب الاختبار ومتجر Google Play. لو رابط الاختبار مش ظاهر، تأكد إنك انضممت للجروب بالحساب الصحيح ثم افتح صفحة اللعبة مرة تانية.
-        </span>
+          <div class="notice">
+            <strong
+              data-ar="لو اللعبة مش ظاهرة:"
+              data-en="Can't see the game?">Can't see the game?</strong>
+
+            <span
+              data-ar="راجع إنك انضممت للجروب وإنك فاتح Google Play بنفس الحساب."
+              data-en="Make sure you joined the group and are using the same account in Google Play.">
+              Make sure you joined the group and are using the same account in Google Play.
+            </span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="videos">
-      <div class="container">
-        <h2
-          class="section-title"
-          data-ar="شوف عفاريت الأسفلت في الأكشن"
-          data-en="See Asphalt Ghosts in action">
-          شوف عفاريت الأسفلت في الأكشن
-        </h2>
+    <section class="video-section">
+      <h2
+        class="section-title"
+        data-ar="شوف اللعبة أثناء اللعب"
+        data-en="Watch the Gameplay">
+        Watch the Gameplay
+      </h2>
 
-        <p
-          class="videos-description"
-          data-ar="اتفرج على فيديو من جيم بلاي عفاريت الأسفلت."
-          data-en="Watch an Asphalt Ghosts gameplay video.">
-          اتفرج على فيديو من جيم بلاي عفاريت الأسفلت.
-        </p>
-
-        <div class="youtube-container">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/rfM7pp_x8qQ?si=r8EWoMvO55IQvOaE"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <div class="video-link">
-          <a
-            class="button secondary"
-            href="https://www.youtube.com/watch?v=rfM7pp_x8qQ"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-ar="شاهد الفيديو على يوتيوب"
-            data-en="Watch the video on YouTube">
-            شاهد الفيديو على يوتيوب
-          </a>
-        </div>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/rfM7pp_x8qQ?si=r8EWoMvO55IQvOaE"
+          title="Asphalt Ghosts Gameplay"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
+
+      <p class="video-fallback">
+        <span
+          data-ar="لو الفيديو مش شغال، افتحه مباشرة على يوتيوب:"
+          data-en="If the video doesn't load, watch it directly on YouTube:">
+          If the video doesn't load, watch it directly on YouTube:
+        </span>
+
+        <br>
+
+        <a
+          href="https://www.youtube.com/watch?v=rfM7pp_x8qQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-ar="مشاهدة الفيديو على يوتيوب"
+          data-en="Watch on YouTube">
+          Watch on YouTube
+        </a>
+      </p>
+    </section>
+
+    <section class="contact">
+      <h2
+        data-ar="واجهت صعوبة؟ إحنا معاك!"
+        data-en="Need Help? We're Here!">
+        Need Help? We're Here!
+      </h2>
+
+      <p
+        data-ar="لو قابلتك أي مشكلة أثناء الانضمام لجروب الاختبار أو تحميل اللعبة، تواصل معانا على صفحة MikaMix الرسمية على فيسبوك وإحنا هنساعدك."
+        data-en="If you have any trouble joining the testing group or downloading the game, contact us through the official MikaMix Facebook page and we'll help you.">
+        If you have any trouble joining the testing group or downloading the game,
+        contact us through the official MikaMix Facebook page and we'll help you.
+      </p>
+
+      <a
+        class="button"
+        href="https://www.facebook.com/MikamixDev"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ar="تواصل معانا على فيسبوك"
+        data-en="Contact Us on Facebook">
+        Contact Us on Facebook
+      </a>
+
+      <p>
+        <a
+          href="https://www.facebook.com/MikamixDev"
+          target="_blank"
+          rel="noopener noreferrer">
+          facebook.com/MikamixDev
+        </a>
+      </p>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <span data-ar="صناعة مصرية بكل فخر — " data-en="Proudly made in Egypt — ">
-        صناعة مصرية بكل فخر —
-      </span>
-      <strong>MikaMix</strong>
-    </div>
+    <span data-ar="صنع بحب بواسطة" data-en="Made with love by">
+      Made with love by
+    </span>
+    <strong>MikaMix</strong>
   </footer>
 
   <script>
     (() => {
       const toggle = document.getElementById("languageToggle");
-      let currentLanguage = "ar";
+      let language = "en";
 
-      function setLanguage(language) {
-        currentLanguage = language;
+      function setLanguage(nextLanguage) {
+        language = nextLanguage;
 
         document.documentElement.lang = language;
         document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+        document.title = language === "ar"
+          ? "عفاريت الأسفلت | MikaMix"
+          : "Asphalt Ghosts | MikaMix";
 
         document.querySelectorAll("[data-ar][data-en]").forEach((element) => {
           element.textContent = element.dataset[language];
         });
 
         toggle.textContent = language === "ar" ? "English" : "العربية";
-        toggle.setAttribute(
-          "aria-label",
-          language === "ar" ? "Switch to English" : "التبديل إلى العربية"
-        );
-
-        document.title = language === "ar"
-          ? "عفاريت الأسفلت | MikaMix"
-          : "Asphalt Ghosts | MikaMix";
       }
 
       toggle.addEventListener("click", () => {
-        setLanguage(currentLanguage === "ar" ? "en" : "ar");
+        setLanguage(language === "en" ? "ar" : "en");
       });
 
-      setLanguage("ar");
+      setLanguage("en");
     })();
   </script>
 </body>
