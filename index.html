@@ -1,94 +1,397 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171717">
-  <meta name="description" content="جرّب عفاريت الأسفلت، لعبة أركيد مصرية من MikaMix. انضم لجروب الاختبار وابدأ اللعب!">
+  <meta name="description" content="عفاريت الأسفلت من MikaMix — انضم للاختبار وشاهد فيديوهات اللعبة.">
   <title>عفاريت الأسفلت | Asphalt Ghosts</title>
+
   <style>
-    :root{--bg:#111;--panel:#1d1d1d;--gold:#ffbd19;--yellow:#ffe34d;--text:#f8f4e8;--muted:#c6c1b4;--line:#39352b}
-    *{box-sizing:border-box}
-    body{margin:0;background:radial-gradient(ellipse at top,#30230a 0%,#151515 44%,#0d0d0d 100%);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
-    a{color:inherit}
-    .wrap{width:min(980px,92%);margin:auto;padding:22px 0 30px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{font-weight:900;letter-spacing:.3px;color:var(--gold);font-size:18px}
-    .lang{border:1px solid #66501b;background:#211c10;color:#fff1bd;border-radius:999px;padding:10px 15px;font-weight:bold;cursor:pointer}
-    .hero{text-align:center;padding:22px 0 14px}
-    .logo{width:min(290px,75vw);height:auto;display:block;margin:0 auto 4px;mix-blend-mode:screen;border-radius:8px}
-    h1{font-size:clamp(29px,6vw,48px);margin:10px 0 8px;line-height:1.25}
-    .gold{color:var(--yellow)}
-    .intro{max-width:650px;margin:0 auto;color:var(--muted);font-size:clamp(15px,2.5vw,18px);line-height:1.9}
-    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:26px 0}
-    .card{background:linear-gradient(145deg,#252525,#171717);border:1px solid var(--line);border-radius:20px;padding:23px;text-align:center;box-shadow:0 12px 32px #0005}
-    .symbol{font-size:35px;margin-bottom:8px}
-    h2{font-size:23px;margin:5px 0 8px}
-    .card p{color:var(--muted);line-height:1.8;min-height:55px;margin:0 0 18px}
-    .buttons{display:flex;flex-direction:column;gap:10px}
-    .btn{display:block;text-decoration:none;border-radius:12px;padding:14px 16px;font-weight:900;transition:transform .15s,filter .15s}
-    .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-    .primary{background:linear-gradient(135deg,var(--yellow),#f39a00);color:#17120a}
-    .secondary{border:1px solid #6b541b;background:#292316;color:#ffe7a0}
-    .note{text-align:center;color:#a9a397;font-size:13px;line-height:1.8;margin:18px auto}
-    footer{border-top:1px solid #302d26;padding-top:18px;text-align:center;color:#aaa;font-size:13px}
-    footer strong{color:var(--gold)}
-    [hidden]{display:none!important}
-    @media(max-width:650px){.cards{grid-template-columns:1fr}.card p{min-height:0}.wrap{padding-top:16px}.hero{padding-top:16px}}
+    :root {
+      --gold: #ffbd19;
+      --yellow: #ffe34d;
+      --text: #f8f4e8;
+      --muted: #c6c1b4;
+      --line: #39352b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at top, #30230a 0%, #151515 44%, #0d0d0d 100%);
+      color: var(--text);
+      font-family: Tahoma, Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(980px, 92%);
+      margin: auto;
+      padding: 22px 0 30px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-weight: 900;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .lang {
+      border: 1px solid #66501b;
+      background: #211c10;
+      color: #fff1bd;
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 22px 0 14px;
+    }
+
+    .logo {
+      width: min(290px, 75vw);
+      height: auto;
+      display: block;
+      margin: 0 auto 4px;
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: clamp(29px, 6vw, 48px);
+      margin: 10px 0 8px;
+      line-height: 1.4;
+    }
+
+    .gold { color: var(--yellow); }
+
+    .intro {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(15px, 2.5vw, 18px);
+      line-height: 1.9;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 26px 0;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #252525, #171717);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 23px;
+      text-align: center;
+      box-shadow: 0 12px 32px #0005;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .symbol {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 23px;
+      margin: 5px 0 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin: 0 0 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: block;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-weight: 900;
+      transition: transform .15s, filter .15s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--yellow), #f39a00);
+      color: #17120a;
+    }
+
+    .secondary {
+      border: 1px solid #6b541b;
+      background: #292316;
+      color: #ffe7a0;
+    }
+
+    .note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      margin: 18px auto;
+      max-width: 680px;
+    }
+
+    .video-section {
+      max-width: 900px;
+      margin: 34px auto;
+    }
+
+    .video-section h2 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px #0005;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .youtube-link {
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    footer {
+      border-top: 1px solid #302d26;
+      padding-top: 18px;
+      text-align: center;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    footer strong { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .wrap { padding-top: 16px; }
+      .hero { padding-top: 16px; }
+      .card { padding: 20px; }
+    }
   </style>
 </head>
+
 <body>
   <main class="wrap">
+
     <header>
       <div class="brand">MikaMix</div>
-      <button class="lang" id="langToggle" type="button" aria-label="Switch language">English</button>
+      <button class="lang" id="langToggle" type="button">English</button>
     </header>
 
     <section class="hero">
-      <img class="logo" src="Logo_Icon.png" alt="شعار عفاريت الأسفلت">
-      <h1 data-ar="جاهز تدخل عالم <span class='gold'>عفاريت الأسفلت؟</span>" data-en="Ready for <span class='gold'>Asphalt Ghosts?</span>">جاهز تدخل عالم <span class="gold">عفاريت الأسفلت؟</span></h1>
-      <p class="intro" data-ar="جرّب لعبة الأكشن والقيادة بطابع مصري من MikaMix. حمّل اللعبة، أو انضم لجروب الاختبار عشان تتابع أخبار التجربة والتحديثات." data-en="Try MikaMix's Egyptian-style arcade driving game. Get the game on Google Play or join our testing group for updates and test access.">جرّب لعبة الأكشن والقيادة بطابع مصري من MikaMix. حمّل اللعبة، أو انضم لجروب الاختبار عشان تتابع أخبار التجربة والتحديثات.</p>
+      <img
+        class="logo"
+        src="Logo_Icon.png"
+        alt="شعار عفاريت الأسفلت"
+      >
+
+      <h1
+        data-ar="جاهز تدخل عالم <span class='gold'>عفاريت الأسفلت؟</span>"
+        data-en="Ready for <span class='gold'>Asphalt Ghosts?</span>"
+      >
+        جاهز تدخل عالم <span class="gold">عفاريت الأسفلت؟</span>
+      </h1>
+
+      <p
+        class="intro"
+        data-ar="جرّب لعبة القيادة والأكشن بطابع مصري من MikaMix. اتبع الخطوتين للانضمام للاختبار، وبعدها اتفرج على فيديوهات اللعبة."
+        data-en="Try MikaMix's Egyptian-style arcade driving game. Follow the two steps to join the test, then watch the gameplay videos."
+      >
+        جرّب لعبة القيادة والأكشن بطابع مصري من MikaMix. اتبع الخطوتين للانضمام للاختبار، وبعدها اتفرج على فيديوهات اللعبة.
+      </p>
     </section>
 
+    <!-- STEP 1: JOIN TEST GROUP FIRST -->
     <section class="cards">
-      <article class="card">
-        <div class="symbol" aria-hidden="true">🏁</div>
-        <h2 data-ar="ابدأ اللعب" data-en="Start Playing">ابدأ اللعب</h2>
-        <p data-ar="افتح صفحة عفاريت الأسفلت على Google Play وشوف تفاصيل اللعبة." data-en="Visit Asphalt Ghosts on Google Play and check out the game.">افتح صفحة عفاريت الأسفلت على Google Play وشوف تفاصيل اللعبة.</p>
-        <div class="buttons">
-          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.mikamix.asphaltghosts" target="_blank" rel="noopener noreferrer" data-ar="افتح اللعبة على Google Play" data-en="Get it on Google Play">افتح اللعبة على Google Play</a>
-        </div>
-      </article>
 
       <article class="card">
         <div class="symbol" aria-hidden="true">👥</div>
-        <h2 data-ar="انضم لجروب الاختبار" data-en="Join the Test Group">انضم لجروب الاختبار</h2>
-        <p data-ar="ادخل جروب MikaMix عشان تلاقي معلومات الاختبار وروابطه، وسجّل بحساب Google لو طُلب منك." data-en="Join the MikaMix group for testing details and links. Sign in with your Google account if asked.">ادخل جروب MikaMix عشان تلاقي معلومات الاختبار وروابطه، وسجّل بحساب Google لو طُلب منك.</p>
+
+        <h2
+          data-ar="الخطوة ١: انضم لجروب الاختبار"
+          data-en="Step 1: Join the Test Group"
+        >
+          الخطوة ١: انضم لجروب الاختبار
+        </h2>
+
+        <p
+          data-ar="ادخل جروب MikaMix أولًا واتبع تعليمات الانضمام للاختبار. لازم تسجّل الدخول بحساب Google نفسه المستخدم على Google Play."
+          data-en="First, join the MikaMix group and follow the testing instructions. You must sign in with the same Google account you use for Google Play."
+        >
+          ادخل جروب MikaMix أولًا واتبع تعليمات الانضمام للاختبار. لازم تسجّل الدخول بحساب Google نفسه المستخدم على Google Play.
+        </p>
+
         <div class="buttons">
-          <a class="btn secondary" href="https://groups.google.com/g/mikamix" target="_blank" rel="noopener noreferrer" data-ar="دخول جروب الاختبار" data-en="Open Test Group">دخول جروب الاختبار</a>
+          <a
+            class="btn primary"
+            href="https://groups.google.com/g/mikamix"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ar="انضم لجروب الاختبار"
+            data-en="Join the Test Group"
+          >
+            انضم لجروب الاختبار
+          </a>
         </div>
       </article>
+
+      <!-- STEP 2: GOOGLE PLAY -->
+      <article class="card">
+        <div class="symbol" aria-hidden="true">🏁</div>
+
+        <h2
+          data-ar="الخطوة ٢: حمّل اللعبة"
+          data-en="Step 2: Get the Game"
+        >
+          الخطوة ٢: حمّل اللعبة
+        </h2>
+
+        <p
+          data-ar="بعد الانضمام للجروب، افتح صفحة عفاريت الأسفلت على Google Play باستخدام نفس حساب Google."
+          data-en="After joining the group, open Asphalt Ghosts on Google Play using the same Google account."
+        >
+          بعد الانضمام للجروب، افتح صفحة عفاريت الأسفلت على Google Play باستخدام نفس حساب Google.
+        </p>
+
+        <div class="buttons">
+          <a
+            class="btn secondary"
+            href="https://play.google.com/store/apps/details?id=com.mikamix.asphaltghosts"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ar="افتح اللعبة على Google Play"
+            data-en="Open on Google Play"
+          >
+            افتح اللعبة على Google Play
+          </a>
+        </div>
+      </article>
+
     </section>
 
-    <p class="note" data-ar="اللعبة من تطوير MikaMix. لو صفحة الاختبار طلبت منك الانضمام أو التسجيل، اتبع التعليمات الظاهرة على Google Play وجروب الاختبار." data-en="Made by MikaMix. If the testing page asks you to join or register, follow the instructions shown on Google Play and in the test group.">اللعبة من تطوير MikaMix. لو صفحة الاختبار طلبت منك الانضمام أو التسجيل، اتبع التعليمات الظاهرة على Google Play وجروب الاختبار.</p>
+    <p
+      class="note"
+      data-ar="ملحوظة مهمة: لازم تستخدم نفس حساب Google في جروب الاختبار وعلى Google Play عشان رابط الاختبار يبقى متاح ليك."
+      data-en="Important: use the same Google account for the test group and Google Play so the testing link is available to you."
+    >
+      ملحوظة مهمة: لازم تستخدم نفس حساب Google في جروب الاختبار وعلى Google Play عشان رابط الاختبار يبقى متاح ليك.
+    </p>
 
-    <footer><strong>MikaMix</strong> · <span data-ar="ألعاب بطابع مصري" data-en="Games with an Egyptian spirit">ألعاب بطابع مصري</span></footer>
+    <!-- YOUTUBE PLAYLIST PLAYER - NOT A STEP -->
+    <section class="video-section">
+
+      <h2
+        data-ar="🎬 فيديوهات عفاريت الأسفلت"
+        data-en="🎬 Asphalt Ghosts Videos"
+      >
+        🎬 فيديوهات عفاريت الأسفلت
+      </h2>
+
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/videoseries?list=PLUDLCwa13WjI"
+          title="Asphalt Ghosts YouTube Playlist"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="youtube-link">
+        <a
+          class="btn secondary"
+          href="https://www.youtube.com/watch?v=9J9czoHazvg&list=PLUDLCwa13WjI"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-ar="افتح الـ Playlist على يوتيوب"
+          data-en="Open Playlist on YouTube"
+        >
+          افتح الـ Playlist على يوتيوب
+        </a>
+      </div>
+
+    </section>
+
+    <footer>
+      <strong>MikaMix</strong> ·
+      <span
+        data-ar="ألعاب بطابع مصري"
+        data-en="Games with an Egyptian spirit"
+      >
+        ألعاب بطابع مصري
+      </span>
+    </footer>
+
   </main>
+
   <script>
-    (function(){
+    (function () {
       const button = document.getElementById('langToggle');
       let language = 'ar';
-      function setLanguage(next){
+
+      function setLanguage(next) {
         language = next;
+
         document.documentElement.lang = language;
         document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
-          el.innerHTML = el.dataset[language];
+
+        document.querySelectorAll('[data-ar][data-en]').forEach(function (element) {
+          element.innerHTML = element.dataset[language];
         });
+
         button.textContent = language === 'ar' ? 'English' : 'العربية';
-        button.setAttribute('aria-label', language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
+        button.setAttribute(
+          'aria-label',
+          language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'
+        );
       }
-      button.addEventListener('click', () => setLanguage(language === 'ar' ? 'en' : 'ar'));
+
+      button.addEventListener('click', function () {
+        setLanguage(language === 'ar' ? 'en' : 'ar');
+      });
+
       setLanguage('ar');
     })();
   </script>
